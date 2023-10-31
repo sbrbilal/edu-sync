@@ -5,10 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edu Sync</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="lessons.js"></script>
 </head>
 
 <body>
+    <div id="app">
+        <!-- Lessons List -->
+        <div class="bg-white">
+            <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+                <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    <div class="group relative" v-for="(lesson, lessonIndex) in lessons" :key="lessonIndex">
+                        <div
+                            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75">
+                            <img :src="lesson.image" :alt="lesson.subject"
+                                class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 space-y-1 flex flex-col justify-start">
+                            <h3 class="text-gray-900">
+                                {{lesson.subject}}
+                            </h3>
+                            <p class="text-sm text-gray-500 truncate">{{lesson.description}}</p>
+                            <p class="text-lg font-medium text-gray-900">£{{lesson.price}}</p>
+                            <p class="text-lg font-medium text-gray-900">{{lesson.spaces}}</p>
+                            <button type="button" class="bg-gray-200 rounded py-2 hover:bg-gray-300"
+                                @click="addToCart(lesson.id)">
+                                Add to cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script src="./js/app.js"></script>
 </body>
 
 </html>
