@@ -15,7 +15,7 @@ const lessons = [
         "location": "Cambridge",
         "price": 27,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-2.jpg"
     },
     {
         "id": 3,
@@ -24,7 +24,7 @@ const lessons = [
         "location": "Oxford",
         "price": 42,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-3.jpg"
     },
     {
         "id": 4,
@@ -33,7 +33,7 @@ const lessons = [
         "location": "Durham",
         "price": 33,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-4.jpg"
     },
     {
         "id": 5,
@@ -42,7 +42,7 @@ const lessons = [
         "location": "Manchester",
         "price": 21,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-5.jpg"
     },
     {
         "id": 6,
@@ -51,7 +51,7 @@ const lessons = [
         "location": "Bristol",
         "price": 25,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-6.jpg"
     },
     {
         "id": 7,
@@ -60,7 +60,7 @@ const lessons = [
         "location": "Leeds",
         "price": 49.99,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-7.jpg"
     },
     {
         "id": 8,
@@ -69,7 +69,7 @@ const lessons = [
         "location": "Birmingham",
         "price": 9.99,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-8.jpg"
     },
     {
         "id": 9,
@@ -78,7 +78,7 @@ const lessons = [
         "location": "Liverpool",
         "price": 77.99,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-9.jpg"
     },
     {
         "id": 10,
@@ -87,7 +87,7 @@ const lessons = [
         "location": "Sheffield",
         "price": 10.99,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-10.jpg"
     },
     {
         "id": 11,
@@ -96,7 +96,7 @@ const lessons = [
         "location": "Nottingham",
         "price": 14.99,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-11.jpg"
     },
     {
         "id": 12,
@@ -105,7 +105,7 @@ const lessons = [
         "location": "Newcastle",
         "price": 9.99,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-12.jpeg"
     },
     {
         "id": 13,
@@ -114,7 +114,7 @@ const lessons = [
         "location": "Coventry",
         "price": 6.99,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-13.jpg"
     },
     {
         "id": 14,
@@ -123,7 +123,7 @@ const lessons = [
         "location": "Leicester",
         "price": 12,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-14.jpg"
     },
     {
         "id": 15,
@@ -132,6 +132,6 @@ const lessons = [
         "location": "Exeter",
         "price": 84.99,
         "spaces": 5,
-        "image": "./images/subject-1.jpg"
+        "image": "./images/subject-15.jpg"
     }
 ]
