@@ -56,8 +56,14 @@ new Vue({
                 switch (this.sortBy) {
                     case 'subject':
                     case 'location':
-                        const attributeA = lessonA[this.sortBy].toLowerCase()
-                        const attributeB = lessonB[this.sortBy].toLowerCase()
+                        let attributeA, attributeB
+                        if (this.sortOrder == 'asc') {
+                            attributeA = lessonA[this.sortBy].toLowerCase()
+                            attributeB = lessonB[this.sortBy].toLowerCase()
+                        } else {
+                            attributeA = lessonB[this.sortBy].toLowerCase()
+                            attributeB = lessonA[this.sortBy].toLowerCase()
+                        }
                         if (attributeA < attributeB) {
                             return -1;
                         }
@@ -69,7 +75,11 @@ new Vue({
 
                     case 'price':
                     case 'spaces':
-                        return lessonA[this.sortBy] - lessonB[this.sortBy]
+                        if (this.sortOrder == 'asc') {
+                            return lessonA[this.sortBy] - lessonB[this.sortBy]
+                        } else {
+                            return lessonB[this.sortBy] - lessonA[this.sortBy]
+                        }
                         break;
                 }
             })
