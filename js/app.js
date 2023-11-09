@@ -3,6 +3,7 @@ new Vue({
     data: {
         lessons: lessons,
         query: '',
+        showCart: false,
         cart: [],
         sortList: [
             {
