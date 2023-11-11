@@ -41,6 +41,12 @@ new Vue({
                 }
                 this.lessons[lessonIndex].spaces--
             }
+        },
+        removeCartItem(cartIndex) {
+            const cartLesson = this.cart[cartIndex]
+            const lessonIndex = this.lessons.findIndex((l) => l.id === cartLesson.id)
+            this.lessons[lessonIndex].spaces += cartLesson.spaces
+            this.cart.splice(cartIndex, 1)
         }
     },
     computed: {
