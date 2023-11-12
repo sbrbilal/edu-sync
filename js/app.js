@@ -54,7 +54,7 @@ new Vue({
         },
         order() {
             if (this.orderValidated) {
-                alert("You order has been completed!")
+                alert("Your order has been submitted!")
             }
         }
     },
