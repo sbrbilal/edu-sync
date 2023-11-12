@@ -88,50 +88,5 @@ const lessons = [
         "price": 10.99,
         "spaces": 5,
         "image": "./images/subject-10.jpg"
-    },
-    {
-        "id": 11,
-        "subject": "Political Science",
-        "description": "Analyze politics and international relations through programs at the University of Nottingham.",
-        "location": "Nottingham",
-        "price": 14.99,
-        "spaces": 5,
-        "image": "./images/subject-11.jpg"
-    },
-    {
-        "id": 12,
-        "subject": "Linguistics",
-        "description": "Explore the intricacies of language and linguistics at Newcastle University.",
-        "location": "Newcastle",
-        "price": 9.99,
-        "spaces": 5,
-        "image": "./images/subject-12.jpeg"
-    },
-    {
-        "id": 13,
-        "subject": "Automotive Engineering",
-        "description": "Study automotive engineering in Coventry, a hub for the automotive industry.",
-        "location": "Coventry",
-        "price": 6.99,
-        "spaces": 5,
-        "image": "./images/subject-13.jpg"
-    },
-    {
-        "id": 14,
-        "subject": "Criminology",
-        "description": "Learn about criminology and criminal justice in Leicester.",
-        "location": "Leicester",
-        "price": 12,
-        "spaces": 5,
-        "image": "./images/subject-14.jpg"
-    },
-    {
-        "id": 15,
-        "subject": "Renewable Energy",
-        "description": "Investigate renewable energy solutions at the University of Exeter.",
-        "location": "Exeter",
-        "price": 84.99,
-        "spaces": 5,
-        "image": "./images/subject-15.jpg"
     }
 ]
