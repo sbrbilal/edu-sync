@@ -74,34 +74,30 @@
                         </button>
                     </div>
 
-                    <div class="w-1/4 px-8 py-10 bg-gray-100">
+                    <form class="w-1/4 px-8 py-10 bg-gray-100" @submit.prevent="order">
                         <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
-                        <div class="flex justify-between mt-10 mb-5">
-                            <span class="font-semibold text-sm uppercase">Lesson{{cart.length > 1 ? 's' : ''}}
-                                {{cart.length}}</span>
+                        <div class="mt-10">
+                            <label class="font-medium inline-block mb-3 text-sm uppercase">Name</label>
+                            <input type="text" v-model="name" placeholder="Enter your name" class="p-2 text-sm w-full">
                         </div>
-                        <div>
-                            <label class="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
-                            <select class="block p-2 text-gray-600 w-full text-sm">
-                                <option>Standard shipping - $10.00</option>
-                            </select>
+                        <div class="py-6">
+                            <label class="font-semibold inline-block mb-3 text-sm uppercase">Phone</label>
+                            <input type="number" v-model="phone" placeholder="Enter your phone"
+                                class="p-2 text-sm w-full">
                         </div>
-                        <div class="py-10">
-                            <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo
-                                Code</label>
-                            <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full">
-                        </div>
-                        <button
-                            class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Apply</button>
                         <div class="border-t mt-8">
                             <div class="flex font-semibold justify-between py-6 text-sm uppercase">
                                 <span>Total cost</span>
-                                <span>$600</span>
+                                <span>£{{totalCost}}</span>
                             </div>
-                            <button
-                                class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+                            <button :disabled="!orderValidated" :class="{
+                                    'bg-indigo-500 hover:bg-indigo-600': orderValidated,
+                                    'bg-gray-500 cursor-not-allowed': !orderValidated,
+                                }" class="font-semibold py-3 text-sm text-white uppercase w-full">
+                                Order
+                            </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div v-else>
                     <div class="flex items-center justify-between">

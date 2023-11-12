@@ -5,6 +5,10 @@ new Vue({
         query: '',
         showCart: false,
         cart: [],
+        name: '',
+        phone: '',
+        nameRegex: /^[a-zA-Z ]{2,30}$/,
+        phoneRegex: /^\d{11}$/,
         sortList: [
             {
                 value: 'Subject',
@@ -47,6 +51,11 @@ new Vue({
             const lessonIndex = this.lessons.findIndex((l) => l.id === cartLesson.id)
             this.lessons[lessonIndex].spaces += cartLesson.spaces
             this.cart.splice(cartIndex, 1)
+        },
+        order() {
+            if (this.orderValidated) {
+                alert("You order has been completed!")
+            }
         }
     },
     computed: {
@@ -90,6 +99,17 @@ new Vue({
                         break;
                 }
             })
+        },
+        totalCost() {
+            let cost = 0
+            this.cart.forEach(lesson => {
+                cost += lesson.spaces * lesson.price
+            });
+            return cost.toFixed(2)
+        },
+        orderValidated() {
+            return this.name && this.nameRegex.test(this.name)
+                && this.phone && this.phoneRegex.test(this.phone)
         }
     }
 })
