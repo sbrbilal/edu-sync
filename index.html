@@ -7,7 +7,6 @@
     <title>Edu Sync</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="lessons.js"></script>
 </head>
 
 <body>
@@ -46,7 +45,7 @@
                                 v-for="(lesson, cartIndex) in cart" :key="cartIndex">
                                 <div class="flex w-2/5">
                                     <div class="w-20">
-                                        <img class="h-24 object-cover" :src="lesson.image" :alt="lesson.subject">
+                                        <img class="h-24 object-cover" :src="`${backendLink}${lesson.image}`" :alt="lesson.subject">
                                     </div>
                                     <div class="flex flex-col justify-between ml-4 flex-grow">
                                         <span class="font-bold text-sm">{{lesson.subject}}</span>
@@ -129,11 +128,11 @@
                         </div>
                     </div>
                     <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
-                        v-if="filteredLessons.length">
-                        <div class="group relative" v-for="(lesson, lessonIndex) in filteredLessons" :key="lessonIndex">
+                        v-if="lessons.length">
+                        <div class="group relative" v-for="(lesson, lessonIndex) in lessons" :key="lessonIndex">
                             <div
                                 class="aspect-h-1 aspect-w-1 h-48 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
-                                <img :src="lesson.image" :alt="lesson.subject"
+                                <img :src="`${backendLink}${lesson.image}`" :alt="lesson.subject"
                                     class="h-full w-full object-cover object-center lg:h-full lg:w-full">
                             </div>
                             <div class="mt-4 space-y-1 flex flex-col justify-start">
@@ -154,14 +153,14 @@
                                 <button :disabled="lesson.spaces === 0" type="button"
                                     class="bg-gray-200 rounded py-2 hover:bg-gray-300" :class="{
                                     'cursor-not-allowed': lesson.spaces === 0
-                                }" @click="addToCart(lesson.id)">
+                                }" @click="addToCart(lesson._id)">
                                     {{lesson.spaces === 0 ? 'Sold out!' : 'Add to cart'}}
                                 </button>
                             </div>
                         </div>
                     </div>
                     <p class="text-center mt-6" v-else>
-                        No lessons found for "{{this.query}}"
+                        No lessons found {{this.query ? `for "${this.query}"` : ''}}
                     </p>
                 </div>
             </div>
