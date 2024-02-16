@@ -9,10 +9,14 @@ for (let index = 1; index <= 10; index++) {
 // Install event
 self.addEventListener('install', function(e) {
     console.log("[Service Worker] Install");
+    console.log(cacheFiles);
     e.waitUntil(
         caches.open(cacheName).then(function(cache) {
             console.log("[Service Worker] Caching files");
-            return cache.addAll(cacheFiles);
+            return cache.addAll(cacheFiles)
+            .catch(function(error) {
+                console.error('Failed to cache files:', error);
+            });
         })
     );
 });
