@@ -24,7 +24,7 @@ self.addEventListener('activate', function(event) {
 
 // Fetch event
 self.addEventListener('fetch', function(e) {
-    console.log('Fetching:', event.request.url);
+    console.log('Fetching:', e.request.url);
     e.respondWith(
         caches.match(e.request).then(function (cachedFile) {
             //if the file is in the cache, retrieve it from there
