@@ -1,19 +1,19 @@
 <template>
     <div>
-        <div class="flex items-center justify-between">
-            <div class="flex flex-col">
+        <div class="flex flex-col items-center justify-between md:flex-row">
+            <div class="flex flex-col w-full mb-4 md:mb-0 md:w-auto">
                 <label for="search" class="block text-sm font-medium leading-6 text-gray-900">Search</label>
-                <input type="search" v-model="query" name="search" id="search"
-                    class="block w-72 rounded-md border-0 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                <input type="search" :value="query" @input="$emit('query', $event.target.value)" name="search" id="search"
+                    class="block w-full md:w-72 rounded-md border-0 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Search">
             </div>
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center justify-between w-full space-x-3 md:w-auto">
                 <label for="sortBy" class="block text-sm font-medium text-gray-900 whitespace-nowrap">
                     Sort by:
                 </label>
-                <select v-model="sortBy" name="sortBy"
+                <select @change="$emit('sort', $event.target.value)" name="sortBy"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                    <option :value="attribute.key" v-for="(attribute, attributeIndex) in sortList"
+                    <option :value="attribute.key" :selected="sortBy === attribute.key" v-for="(attribute, attributeIndex) in sortList"
                         :key="attributeIndex">
                         {{attribute.value}}
                     </option>
@@ -21,7 +21,7 @@
                 <label for="sortOrder" class="block text-sm font-medium text-gray-900 whitespace-nowrap">
                     Order:
                 </label>
-                <select v-model="sortOrder" name="sortOrder"
+                <select @change="$emit('order', $event.target.value)" name="sortOrder"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     <option :selected="'asc' === sortOrder" value="asc">Ascending</option>
                     <option :selected="'desc' === sortOrder" value="desc">Descending</option>

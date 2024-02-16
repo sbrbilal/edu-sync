@@ -1,7 +1,10 @@
 <template>
     <div class="bg-white">
         <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-            <div class="sticky top-0 z-50 bg-white flex items-center justify-end mb-3">
+            <div class="sticky top-0 z-50 bg-white flex items-center justify-end mb-3 space-x-4">
+                <a :href="backendLink" target="_blank" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                    Backend Link
+                </a>
                 <button type="button" class="flex items-center space-x-2 p-2 rounded py-2 hover:bg-gray-100" :class="{
                     'cursor-not-allowed':cart.length == 0
                 }" :disabled="cart.length == 0" @click="showCart = !showCart">
@@ -29,6 +32,9 @@
                 :sortBy="sortBy" 
                 :sortOrder="sortOrder"
                 @add="addToCart"
+                @query="query = $event"
+                @sort="sortBy = $event"
+                @order="sortOrder = $event"
             />
         </div>
     </div>
