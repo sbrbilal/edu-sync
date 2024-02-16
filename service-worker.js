@@ -2,14 +2,10 @@ var cacheName = "edu-sync-v1";
 var cacheFiles = [
     "index.html",
 ];
-for (let index = 1; index <= 10; index++) {
-    cacheFiles.push(`images/subject-${index}.jpg`)
-}
 
 // Install event
 self.addEventListener('install', function(e) {
     console.log("[Service Worker] Install");
-    console.log(cacheFiles);
     e.waitUntil(
         caches.open(cacheName).then(function(cache) {
             console.log("[Service Worker] Caching files");
@@ -27,7 +23,7 @@ self.addEventListener('activate', function(event) {
 });
 
 // Fetch event
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', function(e) {
     console.log('Fetching:', event.request.url);
     e.respondWith(
         caches.match(e.request).then(function (cachedFile) {
