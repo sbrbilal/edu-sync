@@ -24,7 +24,8 @@ self.addEventListener('activate', function(event) {
 
 // Fetch event
 self.addEventListener('fetch', function(event) {
-    if (event.request.url.startsWith('https://')) {
+    if (event.request.url.startsWith('https://') 
+    && !event.request.url.includes('/api/')) {
         event.respondWith(
             caches.match(event.request).then(function(cachedResponse) {
                 if (cachedResponse) {
