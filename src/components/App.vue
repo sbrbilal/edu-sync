@@ -6,36 +6,19 @@
                     Backend Link
                 </a>
                 <button type="button" class="flex items-center space-x-2 p-2 rounded py-2 hover:bg-gray-100" :class="{
-                    'cursor-not-allowed':cart.length == 0
+                    'cursor-not-allowed': cart.length == 0
                 }" :disabled="cart.length == 0" @click="showCart = !showCart">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256">
                         <path fill="currentColor"
                             d="M134 120v56a6 6 0 0 1-12 0v-56a6 6 0 0 1 12 0Zm103.88-22.15l-13.88 104A14 14 0 0 1 210.13 214H45.87A14 14 0 0 1 32 201.85l-13.87-104A14 14 0 0 1 32 82h37.28l54.2-61.95a6 6 0 0 1 9 0l54.2 62H224a14 14 0 0 1 13.87 15.85ZM85.22 82h85.56L128 33.11ZM225.5 94.68A2 2 0 0 0 224 94H32a2 2 0 0 0-1.51.68a2 2 0 0 0-.49 1.58l13.86 104a2 2 0 0 0 2 1.73h164.27a2 2 0 0 0 2-1.73l13.87-104a1.93 1.93 0 0 0-.5-1.58ZM181.4 114a6 6 0 0 0-6.57 5.37l-5.6 56a6 6 0 0 0 5.37 6.63h.61a6 6 0 0 0 6-5.4l5.6-56a6 6 0 0 0-5.41-6.6Zm-100.23 5.4a6 6 0 0 0-11.94 1.2l5.6 56a6 6 0 0 0 6 5.4h.61a6 6 0 0 0 5.37-6.57Z" />
                     </svg>
-                    <span>{{cart.length}}</span>
+                    <span>{{ cart.length }}</span>
                 </button>
             </div>
-            <Checkout 
-                v-if="showCart"
-                :showCart="showCart" 
-                :backendLink="backendLink" 
-                :cart="cart" 
-                @order="order"
-                @remove="removeCartItem"
-            />
-            <Lesson 
-                v-else
-                :lessons="lessons" 
-                :sortList="sortList" 
-                :query="query" 
-                :backendLink="backendLink" 
-                :sortBy="sortBy" 
-                :sortOrder="sortOrder"
-                @add="addToCart"
-                @query="query = $event"
-                @sort="sortBy = $event"
-                @order="sortOrder = $event"
-            />
+            <component :is="currentView" :showCart="showCart" :backendLink="backendLink" :cart="cart" @order="order"
+                @remove="removeCartItem" :lessons="lessons" :sortList="sortList" :query="query" :sortBy="sortBy"
+                :sortOrder="sortOrder" @add="addToCart" @query="query = $event" @sort="sortBy = $event"
+                @sortOrder="sortOrder = $event" />
         </div>
     </div>
 </template>
@@ -94,8 +77,8 @@ export default {
                     sortOrder: this.sortOrder,
                 }
                 const queryString = Object.entries(queryParams)
-                .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-                .join('&');
+                    .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+                    .join('&');
                 const response = await fetch(`${this.backendLink}/api/lessons?${queryString}`);
                 let fetchedLessons = await response.json();
                 this.cart.forEach(cartLesson => {
@@ -132,7 +115,7 @@ export default {
                 this.cart.splice(cartIndex, 1)
             }
         },
-        async order({name, phone}) {
+        async order({ name, phone }) {
             try {
                 await fetch(`${this.backendLink}/api/orders`, {
                     method: 'POST',
@@ -167,6 +150,11 @@ export default {
             } catch (error) {
                 alert('Something went wrong! Please try again later')
             }
+        }
+    },
+    computed: {
+        currentView() {
+            return this.showCart ? 'Checkout' : 'Lesson'
         }
     },
     watch: {

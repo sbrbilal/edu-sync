@@ -13,23 +13,22 @@
                 </label>
                 <select @change="$emit('sort', $event.target.value)" name="sortBy"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                    <option :value="attribute.key" :selected="sortBy === attribute.key" v-for="(attribute, attributeIndex) in sortList"
-                        :key="attributeIndex">
-                        {{attribute.value}}
+                    <option :value="attribute.key" :selected="sortBy === attribute.key"
+                        v-for="(attribute, attributeIndex) in sortList" :key="attributeIndex">
+                        {{ attribute.value }}
                     </option>
                 </select>
                 <label for="sortOrder" class="block text-sm font-medium text-gray-900 whitespace-nowrap">
                     Order:
                 </label>
-                <select @change="$emit('order', $event.target.value)" name="sortOrder"
+                <select @change="$emit('sortOrder', $event.target.value)" name="sortOrder"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     <option :selected="'asc' === sortOrder" value="asc">Ascending</option>
                     <option :selected="'desc' === sortOrder" value="desc">Descending</option>
                 </select>
             </div>
         </div>
-        <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
-            v-if="lessons.length">
+        <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8" v-if="lessons.length">
             <div class="group relative" v-for="(lesson, lessonIndex) in lessons" :key="lessonIndex">
                 <div
                     class="aspect-h-1 aspect-w-1 h-48 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
@@ -38,30 +37,30 @@
                 </div>
                 <div class="mt-4 space-y-1 flex flex-col justify-start">
                     <h3 class="text-gray-900">
-                        {{lesson.subject}} - <span class="text-sm font-semibold">{{lesson.location}}</span>
+                        {{ lesson.subject }} - <span class="text-sm font-semibold">{{ lesson.location }}</span>
                     </h3>
-                    <p class="text-sm text-gray-500 line-clamp-2">{{lesson.description}}</p>
+                    <p class="text-sm text-gray-500 line-clamp-2">{{ lesson.description }}</p>
                     <div class="flex items-center justify-between">
                         <p class="flex items-center space-x-2 text-lg font-medium text-gray-900">
                             <span class="text-xs">Price:</span>
-                            <span>£{{lesson.price}}</span>
+                            <span>£{{ lesson.price }}</span>
                         </p>
                         <p class="flex items-center space-x-2 text-lg font-medium text-gray-900">
                             <span class="text-xs">Space:</span>
-                            <span>{{lesson.spaces}}</span>
+                            <span>{{ lesson.spaces }}</span>
                         </p>
                     </div>
-                    <button :disabled="lesson.spaces === 0" type="button"
-                        class="bg-gray-200 rounded py-2 hover:bg-gray-300" :class="{
-                        'cursor-not-allowed': lesson.spaces === 0
-                    }" @click="$emit('add', lesson._id)">
-                        {{lesson.spaces === 0 ? 'Sold out!' : 'Add to cart'}}
+                    <button :disabled="lesson.spaces === 0" type="button" class="bg-gray-200 rounded py-2 hover:bg-gray-300"
+                        :class="{
+                            'cursor-not-allowed': lesson.spaces === 0
+                        }" @click="$emit('add', lesson._id)">
+                        {{ lesson.spaces === 0 ? 'Sold out!' : 'Add to cart' }}
                     </button>
                 </div>
             </div>
         </div>
         <p class="text-center mt-6" v-else>
-            No lessons found {{query ? `for "${query}"` : ''}}
+            No lessons found {{ query ? `for "${query}"` : '' }}
         </p>
     </div>
 </template>
@@ -94,7 +93,7 @@ export default {
         lessons: {
             type: Array,
             default() {
-                return  []
+                return []
             }
         }
     }

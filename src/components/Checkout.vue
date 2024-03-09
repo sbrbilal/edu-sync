@@ -1,12 +1,12 @@
 <template>
 
-    <div class="flex">
-        <div class="w-3/4 bg-white px-10 py-10">
+    <div class="flex flex-col md:flex-row">
+        <div class="w-full bg-white px-10 py-10 md:w-3/4">
             <div class="flex justify-between border-b pb-8">
                 <h1 class="font-semibold text-2xl">Cart</h1>
                 <h2 class="font-semibold text-2xl">{{cart.length}} Lesson{{cart.length > 1 ? 's' : ''}}</h2>
             </div>
-            <div class="flex mt-10 mb-5">
+            <div class="hidden mt-10 mb-5 md:flex">
                 <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Lesson Details</h3>
                 <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
                     Quantity</h3>
@@ -15,10 +15,10 @@
                 <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
                     Total</h3>
             </div>
-            <div v-if="cart && cart.length">
-                <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5"
+            <div v-if="cart && cart.length" class="divide-y md:divide-y-0">
+                <div class="flex flex-col items-center hover:bg-gray-100 -mx-8 px-6 py-5 md:flex-row"
                     v-for="(lesson, cartIndex) in cart" :key="cartIndex">
-                    <div class="flex w-2/5">
+                    <div class="flex w-full md:w-2/5">
                         <div class="w-20">
                             <img class="h-24 object-cover" :src="`${backendLink}${lesson.image}`" :alt="lesson.subject">
                         </div>
@@ -29,7 +29,7 @@
                                 class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</button>
                         </div>
                     </div>
-                    <div class="flex justify-center w-1/5">
+                    <div class="flex justify-center w-full md:w-1/5">
                         {{lesson.spaces}}
                     </div>
                     <span class="text-center w-1/5 font-semibold text-sm">£{{lesson.price}}</span>
@@ -47,7 +47,7 @@
             </button>
         </div>
 
-        <form class="w-1/4 px-8 py-10 bg-gray-100" @submit.prevent="$emit('order', { name, phone})">
+        <form class="w-full px-8 py-10 bg-gray-100 md:w-1/4" @submit.prevent="$emit('order', { name, phone})">
             <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
             <div class="mt-10">
                 <label class="font-medium inline-block mb-3 text-sm uppercase">Name</label>
